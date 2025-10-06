@@ -1,2 +1,5 @@
-models/
-data/
+data/processed/
+data/raw/
+models/best_model/
+models/checkpoints/
+models/fine_tuned/
