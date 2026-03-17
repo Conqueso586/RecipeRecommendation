@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template
 from flask_cors import CORS
 import os
 
@@ -8,14 +8,13 @@ from api.routes import api
 from data.data_loader import init_sample_data
 
 
-
 def create_app(config_name=None):
     """Application factory pattern for creating Flask app."""
-    
+
     if config_name is None:
         config_name = os.environ.get('FLASK_ENV', 'development')
     
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='frontend')
     app.config.from_object(config[config_name])
     
     # Initialize extensions
@@ -32,13 +31,14 @@ def create_app(config_name=None):
     
     return app
 
+
 def main():
     """Main entry point for running the application."""
     app = create_app()
     
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_ENV', 'development') == 'development'
-    
+
     print("=" * 50)
     print("🍳 Recipe Recommendation API")
     print("=" * 50)
@@ -46,8 +46,14 @@ def main():
     print(f"Health check: http://localhost:{port}/api/health")
     print(f"Debug mode: {debug}")
     print("=" * 50)
-    
+
+    @app.route('/', methods=['GET'])
+    def home():
+        print('Success')
+        return render_template('index.html')
+
     app.run(host='0.0.0.0', port=port, debug=debug)
+
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,7 @@ from data.schemas import recipe_schema, recipes_schema, search_schema
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
+
 @api.route('/health', methods=['GET'])
 def health_check():
     """Health check endpoint."""

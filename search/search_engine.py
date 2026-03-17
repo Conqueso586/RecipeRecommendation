@@ -10,7 +10,7 @@ def embed_texts(texts):
     return encoder(texts).numpy()
 
 # ---- Load recipes ----
-with open("/data/processed/recipes.json", "r") as f:
+with open("../data/processed/recipes.json", "r") as f:
     recipes = json.load(f)
 
 recipe_texts = [r["text"] for r in recipes]

@@ -22,8 +22,8 @@ MAX_GRAD_NORM = 1.0
 RANDOM_SEED = 42
 
 # Data processing settings
-CHUNK_SIZE = 100000  # Process 100k recipes at a time
-MAX_RECIPES_PER_SESSION = 500000  # Train on 500k recipes per session
+CHUNK_SIZE = 10000  # Process 100k recipes at a time
+MAX_RECIPES_PER_SESSION = 100000  # Train on 500k recipes per session
 SHUFFLE_DATA = True
 
 # Checkpoint settings
